@@ -13,12 +13,31 @@ import javax.swing.JOptionPane;
 public class jfrmEjercicio2 extends javax.swing.JFrame {
 
     String nombre;
-    public jfrmEjercicio2() {
+    String dato;
+    public jfrmEjercicio2() {   
         initComponents();
         this.setLocationRelativeTo(null);
-        nombre=String.valueOf(JOptionPane.showInputDialog("Ingrese su nombre"));
-    }
+        
+        java.net.URL url = getClass().getResource("/imagenes/loguito.png");
+        javax.swing.ImageIcon iconoFinal = null;
 
+        if (url != null) {
+            java.awt.Image imgOriginal = new javax.swing.ImageIcon(url).getImage();
+            java.awt.Image imgEscalada = imgOriginal.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+            iconoFinal = new javax.swing.ImageIcon(imgEscalada);
+        }
+        dato = (String) JOptionPane.showInputDialog(
+                this, 
+                "Ingrese su nombre", 
+                "Datos Personales", 
+                JOptionPane.QUESTION_MESSAGE, 
+                iconoFinal, 
+                null, 
+                ""
+        );
+        nombre = dato;
+        jlabelNom.setText(String.valueOf(nombre));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +53,7 @@ public class jfrmEjercicio2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setText("Bienvenido");
 
         jButton1.setText("Menu Principal");
@@ -44,7 +63,7 @@ public class jfrmEjercicio2 extends javax.swing.JFrame {
             }
         });
 
-        jlabelNom.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlabelNom.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jlabelNom.setText("...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -56,20 +75,20 @@ public class jfrmEjercicio2 extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlabelNom)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jlabelNom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGap(115, 115, 115)
                 .addComponent(jButton1)
                 .addGap(14, 14, 14))
         );
